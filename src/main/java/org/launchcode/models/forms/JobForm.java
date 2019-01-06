@@ -55,7 +55,34 @@ public class JobForm {
         coreCompetencies = jobData.getCoreCompetencies().findAll();
         positionTypes = jobData.getPositionTypes().findAll();
     }
-
+    public Employer findEmployer (int employerId) {
+        for (Employer employer : employers) {
+            if (employer.getId() == employerId)
+                return employer;
+        }
+        return null;
+    }
+    public Location findLocation (int locationId) {
+        for (Location location : locations) {
+            if (location.getId() == locationId)
+                return location;
+        }
+        return null;
+    }
+    public PositionType findPositionType (int positionTypeId) {
+        for (PositionType positionType : positionTypes) {
+            if (positionType.getId() == positionTypeId)
+                return positionType;
+        }
+        return null;
+    }
+    public CoreCompetency findCoreCompetency (int coreCompetencyId) {
+        for (CoreCompetency coreCompetency : coreCompetencies) {
+            if (coreCompetency.getId() == coreCompetencyId)
+                return coreCompetency;
+        }
+        return null;
+    }
     public String getName() {
         return name;
     }

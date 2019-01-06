@@ -26,7 +26,8 @@ public class JobController {
     public String index(Model model, int id) {
 
         // TODO #1 - get the Job with the given ID and pass it into the view
-        model.addAttribute("job", jobData.findById(id));
+        Job someJob = jobData.findById(id);
+        model.addAttribute("job", someJob);
         return "job-detail";
     }
 
@@ -44,6 +45,7 @@ public class JobController {
         // redirect to the job detail view for the new Job.
 
         if (errors.hasErrors()){
+            model.addAttribute("errors", errors);
             return "new-job";
         }
         else{
@@ -56,6 +58,7 @@ public class JobController {
                     jobData.getCoreCompetencies().findById(jobForm.getCoreCompetencyId())
                     );
              jobData.add(newJob);
+             int id = newJob.getId();
 
              model.addAttribute("job", newJob);
 
